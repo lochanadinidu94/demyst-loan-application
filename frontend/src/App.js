@@ -14,10 +14,8 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import {default as HappyFace} from '@mui/icons-material/SentimentSatisfiedAltRounded';
 import {default as SadFace} from '@mui/icons-material/SentimentDissatisfiedRounded';
-import {DataGrid} from '@mui/x-data-grid';
 
-// TODO: Move this to a config file.
-const GATEWAY_URL = 'http://localhost:3000'
+
 
 function App() {
 
@@ -172,35 +170,8 @@ function App() {
         ApplicationResult.style.display = 'block'
     }
 
-    const restartApplication = () => {
-        startApplication.style.display = 'none'
-        startForm.style.display = 'block'
-        BalanceSheet.style.display = 'none'
-        ApplicationResult.style.display = 'none'
 
 
-        setSheet({})
-        setPreassessmentValue(0)
-        setDecision(false)
-    }
-
-    const newApplication = () => {
-        startApplication.style.display = 'block'
-        startForm.style.display = 'none'
-        BalanceSheet.style.display = 'none'
-        ApplicationResult.style.display = 'none'
-
-        setName('')
-        setEmail('')
-        setMobile('')
-        setSoftware('')
-        setAmount('')
-        setUserId(0)
-
-        setSheet({})
-        setPreassessmentValue(0)
-        setDecision(false)
-    }
 
     const faceStyle = {
         width: '10rem',
@@ -366,12 +337,6 @@ function App() {
                         </Typography>
 
                         <div style={{height: 500, width: '100%'}}>
-                            Application Id : {applicationId}
-                            <br/>
-                            User ID: {userId}
-                            <br/>
-                            Request Amount: {amount}
-                            <br/>
 
 
                             <table style={{border: '1px solid'}}>
@@ -439,20 +404,7 @@ function App() {
                             Value is <b>{preassessmentValue}</b>
                         </Typography>
 
-                        <Button
-                            variant="contained"
-                            sx={{width: 'auto', marginInline: 'auto'}}
-                            onClick={restartApplication}
-                        >
-                            Restart Application
-                        </Button>
-                        <Button
-                            variant="contained"
-                            sx={{width: 'auto', marginInline: 'auto'}}
-                            onClick={newApplication}
-                        >
-                            New Application
-                        </Button>
+
                     </Box>
                 </div>
 
