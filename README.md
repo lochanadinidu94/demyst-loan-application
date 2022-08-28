@@ -47,7 +47,7 @@ nest run
 ```
 ```bash
 # to test 
-# only test business logic yet, can be implement more test further
+# only test business logic yet, can be implement more test further for cover more edge cases
 cd cd decision-service-api
 npm run test
 ```
