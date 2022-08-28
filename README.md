@@ -49,7 +49,7 @@ nest run
 # to test 
 # only test business logic yet, can be implement more test further
 cd cd decision-service-api
-npm test
+npm run test
 ```
 
 ### Folder structure
