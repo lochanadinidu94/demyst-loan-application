@@ -35,11 +35,6 @@ function App() {
     const [preassessmentValue, setPreassessmentValue] = React.useState(0);
     const [decision, setDecision] = React.useState(false);
 
-    let startApplication = document.getElementById('startApplication')
-    let startForm = document.getElementById('startForm')
-    let BalanceSheet = document.getElementById('BalanceSheet')
-    let ApplicationResult = document.getElementById('ApplicationResult')
-
 
     const fetchApplicationId = async () => {
         return axios({
@@ -56,7 +51,7 @@ function App() {
             setApplicationId(applicationRes.data);
             setApplicationStatus(1);
         } catch (e) {
-            // handle error
+            console.error(e)
         }
         console.log('App id:', applicationId)
     }
@@ -84,11 +79,7 @@ function App() {
 
                 setUserId(response.data.profile.userId)
                 setSheet(response.data.sheet)
-                setRow()
 
-                if (sheet[0] != undefined | null) {
-                    openBalanceSheet();
-                }
                 setApplicationStatus(2);
 
             })
@@ -127,7 +118,7 @@ function App() {
                     console.log(response)
                     console.log(decision)
                     if (preassessmentValue > 0) {
-                        openResult()
+
                     }
                     setApplicationStatus(3);
                 })
@@ -136,42 +127,6 @@ function App() {
                 });
         }
     }
-
-    const columns = [
-        {field: 'year', headerName: 'Year'},
-        {field: 'month', headerName: 'Month'},
-        {field: 'profitOrLoss', headerName: 'Profit or Lost'},
-        {field: 'assetsValue', headerName: 'Profit or Lost'}
-    ];
-
-    let rows = []
-
-    const setRow = () => {
-        const isEmpty = Object.keys(sheet).length === 0
-        if (!isEmpty) {
-
-            rows = [sheet]
-            console.log(rows)
-        } else {
-            rows = [{'year': '', 'month': '', 'profitOrLoss': '', 'assetsValue': ''}]
-        }
-    }
-
-    const openBalanceSheet = () => {
-        startApplication.style.display = 'none'
-        startForm.style.display = 'none'
-        BalanceSheet.style.display = 'block'
-    }
-
-    const openResult = () => {
-        startApplication.style.display = 'none'
-        startForm.style.display = 'none'
-        BalanceSheet.style.display = 'none'
-        ApplicationResult.style.display = 'block'
-    }
-
-
-
 
     const faceStyle = {
         width: '10rem',
@@ -242,7 +197,7 @@ function App() {
                         autoComplete="off"
                     >
                         <Typography variant="h3" gutterBottom>
-                            Please fill the required fields to request a loan application | Application Id : {applicationId}
+                            Please fill the required fields to request a loan application
                         </Typography>
 
                         <FormGroup sx={{

@@ -1,17 +1,18 @@
 ## Loan Application
 
-Backend API services are divided in to 4 micro-services. 
+## Backend API services are divided in to 4 micro-services. 
 
 * Application Service API - main endpoint to communicate with all other services
 * Accounting Service API - to use for return reports according to selected software account and can be implement more software types
 * User Service API - to communicate with all users
 * Decision Service API - to communicate with all business logic
 
+## API Gateway
 * Gateway Service API - to forward http request response,  will use cloud service in production level
 
 Application Service API and User Service API use .env file to connect with cloud database, will remove it further in production level
 
-Frontend 
+## Frontend 
 
 simple react app 
 
@@ -48,7 +49,7 @@ nest run
 ```bash
 # to test 
 # only test business logic yet, can be implement more test further for cover more edge cases
-cd cd decision-service-api
+cd decision-service-api
 npm run test
 ```
 
