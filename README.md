@@ -16,10 +16,23 @@ Application Service API and User Service API use .env file to connect with cloud
 
 simple react app 
 
+## Port Numbers
+
+* Frontend run on - localhost:2999
+* Gateway Service API run on - localhost:3000
+* Application Service API run on - localhost:3001
+* User Service API run on - localhost:3002
+* Accounting Service API run on - localhost:3003
+* Decision Service API run on - localhost:3004
+
+this static port numbers will move for cloud config server file in production level
+
 ### How to run locally
 
 ```bash
 # to run the web app (make sure to run npm install beforehand)
+
+
 cd frontend
 npm start 
 
@@ -29,21 +42,28 @@ npm start
 
 # to run application api
 
-# accounting-service-api
-cd accounting-service-api
-nest run
-
 # application-service-api
 cd application-service-api
-nest run
-
-# decision-service-api
-cd decision-service-api
-nest run
+npx prisma generate 
+npm start
 
 #user-service-api
 cd user-service-api
-nest run
+npx prisma generate
+npm start
+
+# accounting-service-api
+cd accounting-service-api
+npm start
+
+# decision-service-api
+cd decision-service-api
+npm start
+
+## docker run
+# !important - gateway docker-registry.json file updated for communicating between different docker services in docker-compose, if need to run in docker, should change local-registry.json file to docker-registry.json
+# const registry = require('./docker-registry.json')
+docker compose up
 
 ```
 ```bash

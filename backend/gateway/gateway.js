@@ -19,8 +19,8 @@ app.use('/', routes)
 
 app.use((err, req, res, next) => {
     console.error(err.stack)
-    console.error('handler')
-    res.status(500).send();
+    console.error(err)
+    res.status(500).send(err);
 })
 
 

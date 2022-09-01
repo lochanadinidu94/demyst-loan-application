@@ -6,7 +6,7 @@ export class ApprovalService {
     requestApproval(approvalRequestDto: ApprovalRequestDto) {
         const {loneAmount, totProfit, avgAssetsValue} = approvalRequestDto
         let preassessmentValue = this.getPreassessmentValue(loneAmount,totProfit,avgAssetsValue )
-        let decision = this.getDecision(loneAmount, preassessmentValue, totProfit, avgAssetsValue)
+        let decision = this.getDecision(loneAmount, totProfit, avgAssetsValue)
 
         return {preassessmentValue: preassessmentValue, decision: decision}
     }
@@ -17,7 +17,7 @@ export class ApprovalService {
         return 20;
     }
 
-    getDecision(loneAmount, preassessmentValue, totProfit, avgAssetsValue){
+    getDecision(loneAmount, totProfit, avgAssetsValue){
         return !(avgAssetsValue < loneAmount || totProfit < 0);
     }
 }

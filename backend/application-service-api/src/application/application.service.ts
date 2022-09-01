@@ -67,6 +67,7 @@ export class ApplicationService {
       },
       sheet: historyResponse?.data,
     };
+
     return balanceSheet;
   }
 

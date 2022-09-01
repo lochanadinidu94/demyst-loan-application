@@ -53,7 +53,6 @@ function App() {
         } catch (e) {
             console.error(e)
         }
-        console.log('App id:', applicationId)
     }
 
     const selectSoftware = (event) => {
@@ -77,7 +76,7 @@ function App() {
         })
             .then((response) => {
 
-                setUserId(response.data.profile.userId)
+                setUserId(response.data.profile.id)
                 setSheet(response.data.sheet)
 
                 setApplicationStatus(2);
@@ -115,11 +114,7 @@ function App() {
                 .then((response) => {
                     setPreassessmentValue(response.data.preassessmentValue);
                     setDecision(response.data.decision);
-                    console.log(response)
-                    console.log(decision)
-                    if (preassessmentValue > 0) {
 
-                    }
                     setApplicationStatus(3);
                 })
                 .catch((err) => {
@@ -197,7 +192,7 @@ function App() {
                         autoComplete="off"
                     >
                         <Typography variant="h3" gutterBottom>
-                            Please fill the required fields to request a loan application
+                            Please fill the required fields to request a loan application, Application id: {applicationId}
                         </Typography>
 
                         <FormGroup sx={{
@@ -249,7 +244,7 @@ function App() {
                                 margin="normal"
                                 required
                                 id="outlined-requested-amount"
-                                inputProps={{inputMode: 'numeric', pattern: '[0-9]*'}}
+                                type="number"
                                 label="Requested Amount"
                                 value={amount}
                                 onChange={e => setAmount(e.target.value)}
@@ -290,6 +285,12 @@ function App() {
                         <Typography variant="h3" gutterBottom>
                             Balance Sheet
                         </Typography>
+
+                        Application Id: {applicationId}
+                        <br/>
+                        User Id: {userId}
+                        <br/>
+                        Amount Request: {amount}
 
                         <div style={{height: 500, width: '100%'}}>
 

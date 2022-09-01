@@ -1,0 +1,45 @@
+version: "3.3"
+
+services:
+  gateway:
+    ports:
+      - "3000:3000"
+    build:
+      context: backend/gateway
+      dockerfile: Dockerfile
+  application:
+    ports:
+      - "3001:3001"
+    build:
+      context: backend/application-service-api
+      dockerfile: Dockerfile
+    env_file:
+      - backend/application-service-api/.env
+  user:
+    ports:
+      - "3002:3002"
+    build:
+      context: backend/user-service-api
+      dockerfile: Dockerfile
+    env_file:
+      - backend/user-service-api/.env
+  accounting:
+    hostname: "accounting"
+    ports:
+      - "3003:3003"
+    build:
+      context: backend/accounting-service-api
+      dockerfile: Dockerfile
+#  decision:
+#    ports:
+#      - "3004:3004"
+#    build:
+#      context: backend/decision-service-api
+#      dockerfile: Dockerfile
+#  frontend:
+#    build:
+#      context: ./frontend
+#    ports:
+#      - "2999:2999"
+#    container_name: frontend
+#    stdin_open: true

@@ -22,4 +22,5 @@ export class ApplicationController {
   createLoneRequest(@Body() loneRequestDto: LoanRequestDto) {
     return this.applicationService.createLoanRequest(loneRequestDto);
   }
+
 }
