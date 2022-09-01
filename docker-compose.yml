@@ -30,16 +30,16 @@ services:
     build:
       context: backend/accounting-service-api
       dockerfile: Dockerfile
-#  decision:
-#    ports:
-#      - "3004:3004"
-#    build:
-#      context: backend/decision-service-api
-#      dockerfile: Dockerfile
-#  frontend:
-#    build:
-#      context: ./frontend
-#    ports:
-#      - "2999:2999"
-#    container_name: frontend
-#    stdin_open: true
+  decision:
+    ports:
+      - "3004:3004"
+    build:
+      context: backend/decision-service-api
+      dockerfile: Dockerfile
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "2999:2999"
+    container_name: frontend
+    stdin_open: true
