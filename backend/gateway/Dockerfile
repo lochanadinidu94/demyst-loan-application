@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:16-alpine
 ENV PORT 3000
 
 RUN mkdir -p /usr/src/app/gateway

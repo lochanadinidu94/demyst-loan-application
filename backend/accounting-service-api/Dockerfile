@@ -1,5 +1,4 @@
-
-FROM node:14-alpine
+FROM node:16-alpine
 ENV PORT 3003
 
 RUN mkdir -p /usr/src/app/accounting

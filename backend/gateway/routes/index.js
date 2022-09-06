@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const axios = require('axios')
-const registry = require('./local-registry.json')
+const registry = require('./docker-registry.json')
 
 router.all('/:apiName/:path', async (req, res, next) => {
     const services = registry.services[req.params.apiName]

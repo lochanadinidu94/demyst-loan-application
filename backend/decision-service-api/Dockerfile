@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:16-alpine
 ENV PORT 3004
 
 RUN mkdir -p /usr/src/app/decision

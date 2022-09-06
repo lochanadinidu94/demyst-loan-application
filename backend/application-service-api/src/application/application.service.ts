@@ -29,7 +29,7 @@ export class ApplicationService {
 
     return axios({
       method: 'post',
-      url: 'http://localhost:3000/user/create-user',
+      url: 'http://gateway:3000/user/create-user',
       data: user,
     });
   }
@@ -37,7 +37,7 @@ export class ApplicationService {
   async getDataSheet(softwareType) {
     return axios({
       method: 'post',
-      url: 'http://localhost:3000/thirdpartysoftware/return-sheet',
+      url: 'http://gateway:3000/thirdpartysoftware/return-sheet',
       data: { softwareType: softwareType },
     });
   }
@@ -74,7 +74,7 @@ export class ApplicationService {
   async getDecision(loneAmount, totProfit, avgAssetsValue) {
     return axios({
       method: 'post',
-      url: 'http://localhost:3000/approval/approval-request',
+      url: 'http://gateway:3000/approval/approval-request',
       data: {
         loneAmount: loneAmount,
         totProfit: totProfit,
