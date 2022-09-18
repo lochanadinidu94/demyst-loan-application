@@ -3,11 +3,10 @@ import { ThirdpartysoftwareService } from './thirdpartysoftware.service';
 
 @Controller('thirdpartysoftware')
 export class ThirdpartysoftwareController {
+  constructor(private trirdparySoftware: ThirdpartysoftwareService) {}
 
-    constructor(private trirdparySoftware: ThirdpartysoftwareService) {}
-
-    @Post('return-sheet')
-    createNewApplication(@Body() request) {
-        return this.trirdparySoftware.createNewApplication(request);
-    }
+  @Post('return-sheet')
+  createNewApplication(@Body() request) {
+    return this.trirdparySoftware.createNewApplication(request);
+  }
 }
