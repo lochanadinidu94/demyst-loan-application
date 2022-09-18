@@ -1,4 +1,4 @@
-## Loan Application
+## Demyst Loan Application code challenge
 
 ## Backend API services are divided in to 4 micro-services. 
 
@@ -86,4 +86,3 @@ npm run test
     ├── public
     └── src
 
-```
