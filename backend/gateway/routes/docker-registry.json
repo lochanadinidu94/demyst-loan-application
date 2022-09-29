@@ -23,6 +23,12 @@
       "port": 3004,
       "url": "http://decision:3004/approval",
       "enable": true
+    },
+    "review": {
+      "apiname": "review",
+      "port": 3005,
+      "url": "http://reviews:3005/graphql",
+      "enable": true
     }
   }
 }

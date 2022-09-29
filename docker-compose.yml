@@ -35,6 +35,12 @@ services:
     build:
       context: backend/decision-service-api
       dockerfile: Dockerfile
+  reviews:
+    ports:
+      - "3005:3005"
+    build:
+      context: backend/reviews-service-api
+      dockerfile: Dockerfile
   frontend:
     build:
       context: ./frontend
