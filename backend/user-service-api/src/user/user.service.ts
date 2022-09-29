@@ -5,10 +5,10 @@ import { UserDto } from './dto/User.dto';
 
 @Injectable()
 export class UserService {
-    constructor(private dbConnection: DbConnectionModule) {}
+  constructor(private dbConnection: DbConnectionModule) {}
 
-    async createNewUser(userDto: UserDto){
-        const user =  await this.dbConnection.createNewUser(userDto);
-        if (Number(user) > 1) return user
-    }
+  async createNewUser(userDto: UserDto) {
+    const user = await this.dbConnection.createNewUser(userDto);
+    if (Number(user) > 1) return user;
+  }
 }
