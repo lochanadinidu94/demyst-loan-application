@@ -52,6 +52,10 @@ Application Service API and User Service API use .env file to connect with cloud
 
 simple react app context API state management
 
+## Mobile
+
+React Native explo-cli app with context api and axios for communication
+
 ## Port Numbers
 
 * Frontend run on - localhost:2999
@@ -68,10 +72,11 @@ this static port numbers will move for cloud config server file in production le
 
 ```bash
 # to run the web app (make sure to run npm install beforehand)
-
-
 cd frontend
 npm start 
+
+# to run mobile app (make sure to install explo-cli globally beforehand)
+npm start
 
 # to run the gateway (local only)
 cd gateway
@@ -125,7 +130,10 @@ npm run test
 │   └── user-service-api                // to manage user service
 |   └── review-service-api		        // to check reviews
 └── frontend
-    ├── public
+|    ├── public
+|    └── src
+└── mobile
+    ├── assets
     └── src
 
 
