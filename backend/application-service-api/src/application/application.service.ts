@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 
 import { DbConnectionModule } from './db/db-connection.module';
 import { BalanceSheetDto } from './dto/BalanceSheet.dto';
@@ -43,32 +43,36 @@ export class ApplicationService {
   }
 
   async createNewBalanceSheet(blanceSheetDto: BalanceSheetDto) {
-    let userId = blanceSheetDto.userId;
-    if (userId == 0) {
-      const userIdResp = await this.getUserId(blanceSheetDto);
-      userId = userIdResp?.data;
+    try {
+      let userId = blanceSheetDto.userId;
+      if (userId == 0) {
+        const userIdResp = await this.getUserId(blanceSheetDto);
+        userId = userIdResp?.data;
+      }
+
+      const application = {
+        id: blanceSheetDto.id,
+        userId: userId,
+        states: '',
+      };
+
+      const historyResponse = await this.getDataSheet(
+        blanceSheetDto.softwareType,
+      );
+
+      const balanceSheet = {
+        profile: {
+          ...(await this.updateApplication(application)),
+          userName: blanceSheetDto.userName,
+          amount: blanceSheetDto.loneAmount,
+        },
+        sheet: historyResponse?.data,
+      };
+
+      return balanceSheet;
+    } catch (e) {
+      throw new HttpException('Something went to wrong', 500);
     }
-
-    const application = {
-      id: blanceSheetDto.id,
-      userId: userId,
-      states: '',
-    };
-
-    const historyResponse = await this.getDataSheet(
-      blanceSheetDto.softwareType,
-    );
-
-    const balanceSheet = {
-      profile: {
-        ...(await this.updateApplication(application)),
-        userName: blanceSheetDto.userName,
-        amount: blanceSheetDto.loneAmount,
-      },
-      sheet: historyResponse?.data,
-    };
-
-    return balanceSheet;
   }
 
   async getDecision(loneAmount, totProfit, avgAssetsValue) {
